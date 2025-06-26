@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Información sobre Fractales y su Uso en la Vida Cotidiana</title>
+  <!-- Google Fonts: Poppins for headings, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+      --color-bg: #ffffff;
+      --color-accent: #187424;
+      --color-shadow: rgba(85, 9, 9, 0.05);
+      --border-radius: 0.75rem;
+      --transition-duration: 0.3s;
+      --max-width-container: 1200px;
+      --font-sans: 'Inter', sans-serif;
+      --font-heading: 'Poppins', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--color-bg);
+      font-family: var(--font-sans);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      font-size: 18px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color var(--transition-duration);
+    }
+    a:hover,
+    a:focus {
+      color: #189140;
+      outline-offset: 2px;
+      outline: 2px solid #bfdbfe;
+      border-radius: 4px;
+    }
+
+    .top-banner {
+      background-color: #f3f4f6;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      user-select: none;
+      border-bottom: 1px solid #e5e7eb;
+      letter-spacing: 0.05em;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      box-shadow: 0 1px 6px var(--color-shadow);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: var(--max-width-container);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav li a {
+      color: var(--color-text-secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      transition: background-color var(--transition-duration), color var(--transition-duration);
+      font-family: var(--font-sans);
+    }
+
+    nav li a:hover,
+    nav li a:focus {
+      background-color: var(--color-accent);
+      color: #ffffff;
+      outline: none;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: var(--max-width-container);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 3rem;
+      color: var(--color-text-primary);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2.75rem, 5vw, 4.5rem);
+      margin-bottom: 0.4rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: #fff;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      padding: 0.75rem 2.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 1.125rem;
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+      transition: background-color var(--transition-duration), box-shadow var(--transition-duration), transform 0.25s;
+      text-decoration: none;
+      display: inline-block;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #1e40af;
+      box-shadow: 0 8px 23px rgba(30, 64, 175, 0.6);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Section Styling */
+    section {
+      background: #f9fafb;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px var(--color-shadow);
+      padding: 2.5rem 3rem;
+      color: var(--color-text-primary);
+    }
+
+    section h2 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      color: var(--color-text-primary);
+      border-left: 5px solid var(--color-accent);
+      padding-left: 1rem;
+    }
+
+    /* Content Grid for Applications */
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px var(--color-shadow);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(42, 149, 99, 0.25);
+      outline: none;
+    }
+
+    .card img {
+      border-radius: var(--border-radius);
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+      box-shadow: 0 3px 6px var(--color-shadow);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      font-weight: 700;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      flex-grow: 1;
+    }
+
+    /* Videos Section */
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .video-container iframe {
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 14px var(--color-shadow);
+      width: 100%;
+      height: 360px;
+    }
+
+    /* Links Section */
+    .links-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .links-list li a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--color-accent);
+    }
+    .links-list li a:hover,
+    .links-list li a:focus {
+      color: #1eaf53;
+      text-decoration: underline;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f3f4f6;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      text-align: center;
+      user-select: none;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .video-container iframe {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-banner" role="banner" aria-label="Institución educativa">
+    CECYTEM IXTAPALUCA II
+  </div>
+
+  <header>
+    <div class="nav-container" role="banner">
+      <div class="logo" aria-label="Fractales Info">Fractales</div>
+      <nav role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="#introduccion">Introducción</a></li>
+          <li><a href="#aplicaciones">Aplicaciones</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#recursos">Links</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="region" aria-label="Sección principal">
+      <h1>Fractales</h1>
+      <a href="#aplicaciones" class="btn-primary" role="button">Fractales en la vida cotidiana</a>
+    </section>
+
+    <section id="introduccion" role="region" aria-label="Introducción a los fractales">
+      <h2>¿Qué son los fractales?</h2>
+      <p>
+        Los fractales son estructuras geométricas que se repiten a diferentes escalas y muestran una complejidad infinita. Se caracterizan por su autosemejanza, lo que significa que su forma se repite en distintas dimensiones y niveles de zoom. Los fractales pueden ser generados por ecuaciones matemáticas o encontrarse en la naturaleza.
+      </p>
+      <p>
+        Este concepto ha revolucionado varios campos científicos como la geometría, la física y la informática, además de ofrecer patrones estéticamente impresionantes.
+      </p>
+      <style>
+        .slider {
+          width: 100%;
+          max-width: 960px;
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+          font-family: "Inter", sans-serif;
+        }
+        
+        .slides {
+          display: flex;
+          width: auto;
+          transition: transform 0.5s ease-in-out;
+        }
+      
+        input[type="radio"] {
+          display: none;
+        }
+      
+        .slide {
+          flex: 1 0 100%;
+          user-select: none;
+        }
+      
+        .slide img {
+          width: 100%;
+          display: block;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+        
+        /* Navigation dots */
+        .navigation-manual {
+          position: absolute;
+          width: 100%;
+          bottom: 16px;
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+        }
+        
+        .manual-btn {
+          border: 2px solid #8b5cf6;
+          padding: 5px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          width: 16px;
+          height: 16px;
+          background: #ffffff55;
+        }
+        .manual-btn:hover {
+          background-color: #8b5cf6;
+        }
+        
+        /* Slide positioning based on radio checked */
+        #slide1:checked ~ .slides {
+          transform: translateX(0%);
+        }
+        #slide2:checked ~ .slides {
+          transform: translateX(-100%);
+        }
+        #slide3:checked ~ .slides {
+          transform: translateX(-200%);
+        }
+        #slide4:checked ~ .slides {
+          transform: translateX(-300%);
+        }
+        #slide5:checked ~ .slides {
+          transform: translateX(-400%);
+        }
+      </style>
+      
+      <div class="slider" role="region" aria-label="Carrusel de imágenes sin JavaScript">
+        <!-- Radio buttons for manual control -->
+        <input type="radio" name="slider" id="slide1" checked />
+        <input type="radio" name="slider" id="slide2" />
+        <input type="radio" name="slider" id="slide3" />
+        <input type="radio" name="slider" id="slide4" />
+        <input type="radio" name="slider" id="slide5" />
+      
+        <div class="slides">
+          <div class="slide" aria-hidden="false">
+            <img src="Images/Mandelbrot0.jpg"Imagen 1" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="Images/fractal1.png"Imagen 2" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="Images/fractal2.jpg" alt="Imagen 3" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="Images/fractal3.jpg"Imagen 4" />
+          </div>
+          <div class="slide" aria-hidden="true">
+            <img src="Images/fractal5.jpg"Imagen 5" />
+          </div>
+        </div>
+      
+        <div class="navigation-manual" role="tablist" aria-label="Navegación del carrusel sin JavaScript">
+          <label for="slide1" class="manual-btn" role="tab" aria-selected="true" tabindex="0" aria-controls="slide1"></label>
+          <label for="slide2" class="manual-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="slide2"></label>
+          <label for="slide3" class="manual-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="slide3"></label>
+          <label for="slide4" class="manual-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="slide4"></label>
+          <label for="slide5" class="manual-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="slide5"></label>
+        </div>
+      </div>
+      
+      
+    <section id="aplicaciones" role="region" aria-label="Aplicaciones de los fractales en la vida cotidiana">
+      <h2>Aplicaciones de los fractales en la vida cotidiana</h2>
+      <div class="applications-grid">
+        <article class="card" tabindex="0">
+          <h3>Naturaleza y Biología</h3>
+          <p>Los fractales describen patrones en la naturaleza como las hojas de los helechos, la estructura de los pulmones y los sistemas vasculares que optimizan funciones biológicas.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Electricidad y Física</h3>
+          <p>Los fractales explican la formación de rayos y la distribución de conductos eléctricos, ayudando a predecir y modelar fenómenos naturales y artificiales.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Telecomunicaciones</h3>
+          <p>Las antenas fractales permiten la recepción de múltiples frecuencias con diseños compactos y eficientes, mejorando la calidad de señales en dispositivos móviles.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>Economía y Finanzas</h3>
+          <p>Los fractales ayudan a modelar comportamientos del mercado financiero y patrones de riesgo, aportando modelos matemáticos para análisis predictivos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="videos" role="region" aria-label="Videos sobre fractales">
+      <h2>Videos</h2>
+      <div class="video-container">
+        <iframe title="¿Que son los fractales?" src="https://www.youtube.com/watch?v=Wea_1L-C9Xo&pp=ygUVcXVlIHNvbiBsb3MgZnJhY3RhbGVz" allowfullscreen loading="lazy"></iframe>
+        <iframe title="Biologia desde 0" src="https://www.youtube.com/watch?v=tv3Wj7ou_v8&pp=ygUVcXVlIHNvbiBsb3MgZnJhY3RhbGVz" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section id="recursos" role="region" aria-label="Recursos y enlaces externos">
+      <h2>Links sobre fractales</h2>
+      <ul class="links-list">
+        <li><a href="https://www.nationalgeographic.com.es/ciencia/fractales-patrones-que-se-encuentran-naturaleza_20807" target="_blank" rel="noopener noreferrer">National geographic.com</a></li>
+        <li><a href="https://www.repo-ciie.dfie.ipn.mx/pdf/1060.pdf" target="_blank" rel="noopener noreferrer">IPN.com</a></li>
+        <li><a href="https://fractalfoundation.org/resources/what-are-fractals/" target="_blank" rel="noopener noreferrer">The Fractal Foundation.com</a></li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
